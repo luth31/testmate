@@ -1,0 +1,24 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="TestMate">
+    <output-path>$PROJECT_DIR$/out/artifacts/TestMate</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="backend.Main" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="TestMate.jar">
+        <element id="module-output" name="TestMate" />
+        <element id="library" level="project" name="argon2-jvm-2.6" />
+        <element id="library" level="project" name="javafx" />
+        <element id="library" level="project" name="jna-5.5.0" />
+        <element id="library" level="project" name="sqlite-jdbc-3.27.2.1" />
+      </element>
+    </root>
+  </artifact>
+</component>

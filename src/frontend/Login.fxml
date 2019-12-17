@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.LoginController">
+   <children>
+      <TextField fx:id="usernameField" alignment="CENTER" layoutX="66.0" layoutY="165.0" promptText="Username" style="-fx-background-color: darkgray; -fx-prompt-text-fill: white; -fx-effect: dropshadow(three-pass-box, white, 2, 0, 0, 0);" />
+      <Text fill="WHITE" fontSmoothingType="LCD" layoutX="97.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TestMate">
+         <font>
+            <Font name="Circular Black" size="24.0" />
+         </font>
+      </Text>
+      <Text fontSmoothingType="LCD" layoutX="87.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Copyright 2019 Paul Munteanu">
+         <font>
+            <Font name="Arial" size="9.0" />
+         </font>
+      </Text>
+      <Button fx:id="loginButton" alignment="CENTER" layoutX="122.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" style="-fx-background-color: darkgray; -fx-background-radius: 12; -fx-border-color: lightgray; -fx-border-radius: 10;" text="Login" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Button>
+      <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="65.0" layoutY="237.0" promptText="Password" style="-fx-background-color: darkgray; -fx-prompt-text-fill: white; -fx-effect: dropshadow(three-pass-box, white, 2, 0, 0, 0);" />
+      <Text fx:id="usernameErrorText" fill="#e40000" layoutX="65.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="167.0">
+         <font>
+            <Font name="Calibri" size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="passwordErrorText" fill="#e40000" layoutX="66.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="167.0">
+         <font>
+            <Font name="Calibri" size="13.0" />
+         </font>
+      </Text>
+      <Button fx:id="registerButton" layoutX="125.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleRegisterButtonAction" style="-fx-background-color: gray;" text="Register" textFill="#002eff">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

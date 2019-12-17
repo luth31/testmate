@@ -1,7 +1,9 @@
 package db;
 
+import java.awt.*;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class DBManager {
@@ -9,11 +11,10 @@ public class DBManager {
         ConnectionURL = Path;
         Connect();
         InitTables();
-        VerifyDB();
     }
 
     // Connect to the SQLite DB
-    public boolean Connect() {
+    private boolean Connect() {
         try {
             _DB = DriverManager.getConnection("jdbc:sqlite:" + ConnectionURL);
             System.out.println("Connected to the DB.");
@@ -21,37 +22,35 @@ public class DBManager {
         catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        finally {
-            try {
-                if (_DB != null)
-                    _DB.close();
-            }
-            catch (SQLException e2) {
-                System.out.println(e2.getMessage());
-                System.exit(1);
-            }
-            System.exit(1);
-        }
         return true;
     }
 
-    // Verify if needed tables exist in DB and create them if not
-    public void VerifyDB() {
-        Iterator<Table> iter = Tables.iterator();
-        while(iter.hasNext()) {
-            Table temp = iter.next();
-            if (!TableExists(temp.Name))
-                CreateTable(temp);
-        }
+    private void InitTables() {
+        _AuthTable = new AuthTable("auth", this);
+        _TestTable = new TestTable("tests", this);
+        InitTable(_AuthTable);
+        InitTable(_TestTable);
     }
 
-    // Check if given table exists in DB
-    public boolean TableExists(String Name) {
-        ResultSet res = RawQuery("SELECT name FROM sqlite_master WHERE type='table' AND name=" + Name);
+    private void InitTable(Table Table) {
+        for (HashMap.Entry<String, db.Table.ColumnType> Column : Table.Columns.entrySet()) {
+            if (!ColumnExists(Table, Column.getKey())) {
+                DropTable(Table);
+                break;
+            }
+        }
+        if (!TableExists(Table))
+            CreateTable(Table);
+    }
+
+    // DB FUNCTIONS
+
+    // Check if given column from a table exists in DB
+    public boolean ColumnExists(Table Table, String Column) {
         try {
-            res.next();
-            if (res.getString("name") == Name)
-                return true;
+            ResultSet Res = _DB.getMetaData().getColumns(null, null, Table.Name, Column);
+            Res.next();
+            return Res.getRow() > 0;
         }
         catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -59,35 +58,28 @@ public class DBManager {
         return false;
     }
 
-    // Create table from given Table object
-    public void CreateTable(Table TableData) {
-        RawQuery(TableData.CreateString());
+    // Check if given table exists in DB
+    public boolean TableExists(Table Table) {
+        try {
+            ResultSet Res = _DB.getMetaData().getTables(null, null, Table.Name, null);
+            Res.next();
+            return Res.getRow() > 0;
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+    // Create table from given table object
+    public void CreateTable(Table Table) {
+        RawQuery(Table.CreateString());
     }
 
     // Drop table by given name
-    public void DropTable(String Name) {
-        String temp = "DROP TABLE IF EXISTS " + Name + ";";
+    public void DropTable(Table Table) {
+        String temp = "DROP TABLE IF EXISTS " + Table.Name + ";";
         RawQuery(temp);
-    }
-
-    // Helper function; create and recreate all tables; not yet used
-    public void InitDB() {
-        Iterator<Table> iter = Tables.iterator();
-        while(iter.hasNext()) {
-            Table temp = iter.next();
-            DropTable(temp.Name);
-            CreateTable(temp);
-        }
-    }
-
-    // Init Tables array
-    public void InitTables() {
-        Tables = new ArrayList<Table>();
-        Table Auth = new Table("auth");
-        Auth.AddColumn("username", Table.ColumnType.TEXT);
-        Auth.AddColumn("salt", Table.ColumnType.TEXT);
-        Auth.AddColumn("password", Table.ColumnType.TEXT);
-        Tables.add(Auth);
     }
 
     // Run a query given by Query string
@@ -103,7 +95,19 @@ public class DBManager {
         return res;
     }
 
-    private ArrayList<Table> Tables = null; // List of expected tables
+    public PreparedStatement PreparedStatement(String Query) {
+        try {
+            PreparedStatement stmt = _DB.prepareStatement(Query);
+            return stmt;
+        }
+        catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public AuthTable _AuthTable;
+    public TestTable _TestTable;
     private Connection _DB = null;
     private String ConnectionURL;
 }
