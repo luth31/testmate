@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="671.0" prefWidth="227.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.Controller.MenuController">
+   <children>
+      <ListView fx:id="testListView" layoutX="14.0" layoutY="53.0" onMouseClicked="#handleChangeSelection" prefHeight="482.0" prefWidth="200.0" style="-fx-background-color: darkgray; -table-row-cell: darkgray;" />
+      <ChoiceBox fx:id="categoryChoiceBox" layoutX="14.0" layoutY="14.0" onAction="#handleCategoryChange" prefHeight="27.0" prefWidth="200.0" />
+      <Button fx:id="takeTestButton" layoutX="14.0" layoutY="557.0" mnemonicParsing="false" onAction="#handleTakeTest" prefHeight="86.0" prefWidth="202.0" style="-fx-background-color: lightgray;" text="Take test" />
+   </children>
+</AnchorPane>

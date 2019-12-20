@@ -1,14 +1,21 @@
-package frontend;
+package frontend.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import backend.Main;
+
+import java.io.IOException;
 
 public class LoginController {
     @FXML
@@ -39,6 +46,18 @@ public class LoginController {
             return;
         }
         ShowAlert(Alert.AlertType.INFORMATION, "Login Successful", StageStyle.UTILITY, "You have been successfully logged in.");
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/frontend/FXML/Menu.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("TestMate");
+            stage.setScene(new Scene(root));
+            stage.show();
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -77,6 +96,6 @@ public class LoginController {
         alert.setTitle(Title);
         alert.initStyle(Style);
         alert.setContentText(Context);
-        alert.show();
+        alert.showAndWait();
     }
 }

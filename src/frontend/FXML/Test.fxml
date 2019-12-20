@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="406.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text fx:id="titleText" layoutX="189.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="questionText" layoutX="189.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="answer1" layoutX="89.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="answer2" layoutX="89.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="answer3" layoutX="89.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="answer4" layoutX="89.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <RadioButton fx:id="radio1" layoutX="36.0" layoutY="164.0" mnemonicParsing="false" text="1" />
+      <RadioButton fx:id="radio2" layoutX="35.0" layoutY="200.0" mnemonicParsing="false" text="2" />
+      <RadioButton fx:id="radio3" layoutX="35.0" layoutY="240.0" mnemonicParsing="false" text="3" />
+      <RadioButton fx:id="radio4" layoutX="35.0" layoutY="284.0" mnemonicParsing="false" text="4" />
+      <Button fx:id="exitButton" layoutX="127.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleExitButton" text="Exit" />
+      <Button fx:id="nextButton" layoutX="239.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleNextButton" text="Next" />
+   </children>
+</AnchorPane>

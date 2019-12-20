@@ -28,8 +28,10 @@ public class DBManager {
     private void InitTables() {
         _AuthTable = new AuthTable("auth", this);
         _TestTable = new TestTable("tests", this);
+        _QuestionTable = new QuestionTable("questions", this);
         InitTable(_AuthTable);
         InitTable(_TestTable);
+        InitTable(_QuestionTable);
     }
 
     private void InitTable(Table Table) {
@@ -95,6 +97,16 @@ public class DBManager {
         return res;
     }
 
+    public void RawExecute(String SQL) {
+        try {
+            Statement stmt = _DB.createStatement();
+            stmt.execute(SQL);
+        }
+        catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
     public PreparedStatement PreparedStatement(String Query) {
         try {
             PreparedStatement stmt = _DB.prepareStatement(Query);
@@ -108,6 +120,7 @@ public class DBManager {
 
     public AuthTable _AuthTable;
     public TestTable _TestTable;
+    public QuestionTable _QuestionTable;
     private Connection _DB = null;
     private String ConnectionURL;
 }

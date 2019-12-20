@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.Controller.CreatorController">
+   <children>
+      <Text layoutX="85.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" />
+      <ListView fx:id="questionsListView" layoutX="371.0" layoutY="14.0" prefHeight="325.0" prefWidth="200.0" />
+      <TextField fx:id="titleText" layoutX="15.0" layoutY="31.0" />
+      <Text layoutX="243.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" />
+      <TextField fx:id="categoryText" layoutX="188.0" layoutY="31.0" />
+      <Text layoutX="154.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question" />
+      <TextField fx:id="questionText" layoutX="13.0" layoutY="105.0" prefHeight="27.0" prefWidth="344.0" />
+      <Text layoutX="15.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer 1" />
+      <Text layoutX="15.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer 2" />
+      <Text layoutX="15.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer 3" />
+      <Text layoutX="15.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer 4" />
+      <TextField fx:id="answer1Text" layoutX="85.0" layoutY="155.0" />
+      <TextField fx:id="answer2Text" layoutX="85.0" layoutY="195.0" />
+      <TextField fx:id="answer3Text" layoutX="85.0" layoutY="236.0" />
+      <TextField fx:id="answer4Text" layoutX="85.0" layoutY="279.0" />
+      <RadioButton fx:id="a1Radio" layoutX="271.0" layoutY="160.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="4.0" />
+      <RadioButton fx:id="a2Radio" layoutX="271.0" layoutY="200.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="4.0" />
+      <RadioButton fx:id="a3Radio" layoutX="271.0" layoutY="241.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="4.0" />
+      <RadioButton fx:id="a4Radio" layoutX="271.0" layoutY="283.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="4.0" />
+      <Button fx:id="addQuestionButton" layoutX="370.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleAddQuestion" prefHeight="27.0" prefWidth="200.0" text="Add question" />
+      <Button fx:id="finishButton" layoutX="14.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleFinishButton" text="Finish" />
+      <Button fx:id="exitButton" layoutX="71.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleExitButton" text="Exit" />
+   </children>
+</AnchorPane>

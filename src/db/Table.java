@@ -2,6 +2,7 @@ package db;
 
 import java.sql.ResultSet;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Iterator;
 
 // Table model
@@ -9,7 +10,7 @@ public class Table {
     public Table(String TableName, DBManager Manager) {
         _Manager = Manager;
         Name = TableName;
-        Columns = new HashMap<String,ColumnType>();
+        Columns = new LinkedHashMap<String,ColumnType>();
     }
 
     // Adds a column
@@ -48,7 +49,7 @@ public class Table {
 
     DBManager _Manager;  // Reference to DBManager to use RawQuery
     String Name; // Table name
-    public HashMap<String, ColumnType> Columns; // Name and type of the column
+    public LinkedHashMap<String, ColumnType> Columns; // Name and type of the column
 
     public enum ColumnType {
         INTEGER,
